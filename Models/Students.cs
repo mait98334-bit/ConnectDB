@@ -9,11 +9,11 @@ namespace ConnectDB.Models
 
         [Required] 
         [StringLength(20)] 
-        public string StudentCode { get; set; }
+        public string? StudentCode { get; set; }
 
         [Required] 
         [StringLength(100)] 
-        public string FullName { get; set; }
+        public string? FullName { get; set; }
 
         public DateTime Birthday { get; set; }
     }
