@@ -72,4 +72,26 @@ public class StudentsController : ControllerBase
 
         return NoContent();
     }
+
+        [HttpGet("search")]
+        public async Task<ActionResult<IEnumerable<Student>>> Search(string name)
+        {
+            return await _context.Students
+                .Where(s => s.FullName.Contains(name))
+                .ToListAsync();
+        }
+
+        [HttpGet("filter-by-year/{year}")]
+        public async Task<ActionResult<IEnumerable<Student>>> FilterByYear(int year)
+        {
+            return await _context.Students
+                .Where(s => s.Birthday.Year == year)
+                .ToListAsync();
+        }
+
+        [HttpGet("count")]
+        public async Task<ActionResult<int>> GetCount()
+        {
+            return await _context.Students.CountAsync();
+        }
 }
